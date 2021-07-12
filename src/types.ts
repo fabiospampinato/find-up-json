@@ -4,7 +4,7 @@
 type Result = {
   path: string,
   buffer: Buffer,
-  content: Record<string | number, any>
+  content: any
 };
 
 /* EXPORT */
