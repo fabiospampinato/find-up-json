@@ -1,7 +1,7 @@
 {
   "name": "find-up-json",
   "description": "Find, read and parse the first matching file found walking the filesystem upwards.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
