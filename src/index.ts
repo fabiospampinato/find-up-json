@@ -1,9 +1,9 @@
 
 /* IMPORT */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import {Result} from './types';
+import fs from 'node:fs';
+import path from 'node:path';
+import type {Result} from './types';
 
 /* MAIN */
 
@@ -32,7 +32,7 @@ const findUp = ( fileName: string, folderPath: string = process.cwd (), maxDepth
 
     } else {
 
-      let filePathNext = path.normalize ( path.join ( path.resolve ( folderPath, '..' ), fileName ) );
+      const filePathNext = path.normalize ( path.join ( path.resolve ( folderPath, '..' ), fileName ) );
 
       if ( filePathNext === filePath ) return;
 

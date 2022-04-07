@@ -1,5 +1,5 @@
 
-/* TYPES */
+/* MAIN */
 
 type Result = {
   path: string,
@@ -9,4 +9,4 @@ type Result = {
 
 /* EXPORT */
 
-export {Result};
+export type {Result};
