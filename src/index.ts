@@ -26,7 +26,17 @@ const findUp = ( fileName: string, folderPath: string = process.cwd (), maxDepth
 
     if ( buffer ) {
 
-      const content = JSON.parse ( buffer.toString () );
+      let content: Record<string, unknown>;
+
+      try {
+
+        content = JSON.parse ( buffer.toString () ); // Parsing in a try..catch as the file might contain comments, in practice
+
+      } catch {
+
+        content = {};
+
+      }
 
       return { path: filePath, buffer, content };
 
