@@ -3,7 +3,6 @@
 
 import {describe} from 'fava';
 import path from 'node:path';
-import dirname from 'tiny-dirname';
 import findUp from '../dist/index.js';
 
 /* MAIN */
@@ -20,7 +19,7 @@ describe ( 'findUp', it => {
 
   it ( 'can find a file from a custom folder', t => {
 
-    const {content} = findUp ( 'package.json', dirname ( import.meta.url ) );
+    const {content} = findUp ( 'package.json', path.resolve ( './test' ) );
 
     t.is ( content.name, 'find-up-json' );
 
@@ -28,7 +27,7 @@ describe ( 'findUp', it => {
 
   it ( 'does not throw if the file cannot be parsed', t => {
 
-    const {content} = findUp ( 'comments.jsonc', path.join ( dirname ( import.meta.url ), 'fixtures' ) );
+    const {content} = findUp ( 'comments.jsonc', path.resolve ( './test/fixtures' ) );
 
     t.deepEqual ( content, {} );
 
