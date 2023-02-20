@@ -43,7 +43,9 @@ const findUp = ( fileName: string, folderPath: string = process.cwd (), maxDepth
 
     } else {
 
-      const filePathNext = path.normalize ( path.join ( path.resolve ( folderPath, '..' ), fileName ) );
+      folderPath = path.resolve ( folderPath, '..' );
+
+      const filePathNext = path.normalize ( path.join ( folderPath, fileName ) );
 
       if ( filePathNext === filePath ) return;
 
