@@ -17,7 +17,7 @@ const findUp = ( fileName: string, folderPath: string = process.cwd (), maxDepth
 
     if ( depth > maxDepth ) return;
 
-    let buffer: Buffer | undefined = undefined;
+    let buffer: Buffer | undefined;
 
     try {
 
