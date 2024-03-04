@@ -1,60 +1,25 @@
 
 /* IMPORT */
 
+import findUpPath from 'find-up-path';
+import {Buffer} from 'node:buffer';
 import fs from 'node:fs';
-import path from 'node:path';
 import process from 'node:process';
+import {attempt} from './utils';
 import type {Result} from './types';
 
 /* MAIN */
 
 const findUp = ( fileName: string, folderPath: string = process.cwd (), maxDepth: number = 25 ): Result | undefined => {
 
-  let filePath = path.normalize ( path.join ( folderPath, fileName ) );
-  let depth = 1;
+  const path = findUpPath ( fileName, folderPath, maxDepth );
 
-  while ( true ) {
+  if ( !path ) return;
 
-    if ( depth > maxDepth ) return;
+  const buffer = attempt ( () => fs.readFileSync ( path ), Buffer.alloc ( 0 ) ); // Attempting, as the file might not exist anymore, or we might not have access to it, etc.
+  const content = attempt ( () => JSON.parse ( buffer.toString () ), {} ); // Attempting, as the file might contain comments, in practice
 
-    let buffer: Buffer | undefined;
-
-    try {
-
-      buffer = fs.readFileSync ( filePath );
-
-    } catch {}
-
-    if ( buffer ) {
-
-      let content: Record<string, unknown>;
-
-      try {
-
-        content = JSON.parse ( buffer.toString () ); // Parsing in a try..catch as the file might contain comments, in practice
-
-      } catch {
-
-        content = {};
-
-      }
-
-      return { path: filePath, buffer, content };
-
-    } else {
-
-      folderPath = path.resolve ( folderPath, '..' );
-
-      const filePathNext = path.normalize ( path.join ( folderPath, fileName ) );
-
-      if ( filePathNext === filePath ) return;
-
-      filePath = filePathNext;
-      depth += 1;
-
-    }
-
-  }
+  return { path, buffer, content };
 
 };
 
