@@ -26,3 +26,4 @@ const findUp = ( fileName: string, folderPath: string = process.cwd (), maxDepth
 /* EXPORT */
 
 export default findUp;
+export type {Result};
