@@ -2,7 +2,7 @@
   "name": "find-up-json",
   "repository": "github:fabiospampinato/find-up-json",
   "description": "Find, read and parse the first matching file found walking the filesystem upwards.",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
