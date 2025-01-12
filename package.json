@@ -3,7 +3,7 @@
   "repository": "github:fabiospampinato/find-up-json",
   "description": "Find, read and parse the first matching file found walking the filesystem upwards.",
   "license": "MIT",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
