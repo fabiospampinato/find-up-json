@@ -2,6 +2,7 @@
   "name": "find-up-json",
   "repository": "github:fabiospampinato/find-up-json",
   "description": "Find, read and parse the first matching file found walking the filesystem upwards.",
+  "license": "MIT",
   "version": "2.0.4",
   "type": "module",
   "main": "dist/index.js",
@@ -23,12 +24,12 @@
     "parse"
   ],
   "dependencies": {
-    "find-up-path": "^1.0.0"
+    "find-up-path": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.11.24",
-    "fava": "^0.2.1",
-    "tsex": "^3.2.0",
-    "typescript": "^5.3.3"
+    "@types/node": "^18.19.70",
+    "fava": "^0.3.4",
+    "tsex": "^4.0.2",
+    "typescript": "^5.7.3"
   }
 }
